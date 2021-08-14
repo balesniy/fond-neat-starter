@@ -23,19 +23,56 @@ primaryCTA:
     <p>
         Пассивный доход до 20% годовых на инвестициях в недвижимость.
     </p>
+
     <div>
         <h3>Отзывы инвесторов</h3>
-        <ul>
-            <li>Отзыв 1</li>
-            <li>Отзыв 2</li>
-            <li>Отзыв 3</li>
-        </ul>
+        {% set reviews = collections.review %}
+
+        {% for review in reviews %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ review.url | url }}">
+                    {% if review.data.title %}
+                    {{ review.data.title }}
+                    {% else %}
+                    Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            {% if review.data.thumbnail %}
+            <img src="{{review.data.thumbnail}}" alt="">
+            {% endif %}
+            {% if review.data.mediaUrl %}
+            <p>{{ review.data.mediaUrl }}</p>
+            {% endif %}
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ review.date | readableDate }}
+                    by
+                    <a>{{ review.data.author }}</a>
+
+                </time>
+            </p>
+            {% if review.data.description %}
+            <p class="text-lg text-gray-500 mb-3">
+                {{ review.data.description }}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ review.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+        {% endfor %}
     </div>
     <div>
         <h3>Вопросы</h3>
-        {% set questionslist = collections.question %}
+        {% set questions = collections.question %}
 
-        {% for question in questionslist %}
+        {% for question in questions %}
         <article class="my-8">
             <h2 class="font-bold text-3xl text-gray-900 mb-2">
                 <a href="{{ question.url | url }}">
@@ -46,6 +83,9 @@ primaryCTA:
                     {% endif %}
                 </a>
             </h2>
+            {% if question.data.thumbnail %}
+            <img src="{{question.data.thumbnail}}" alt="">
+            {% endif %}
             <p class="text-base leading-6 text-gray-500 mb-3">
                 <time>
                     {{ question.date | readableDate }}

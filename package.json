@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.1.0",
+    "eleventy-plugin-embed-everything": "^1.13.3",
     "postcss": "^8.2.1"
   }
 }

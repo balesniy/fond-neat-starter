@@ -30,6 +30,19 @@ collections:
         multiple: true
         create: true
         options: ["Tags", "created", "from", "config.yml"]
+  - label: "Отзывы"
+    name: "reviews"
+    folder: "src/reviews"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Media Url", name: "mediaUrl", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - label: "FAQ"
     name: "questions"
     folder: "src/questions"
@@ -42,12 +55,48 @@ collections:
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Featured Image"
+        name: "thumbnail"
+        widget: "image"
+        choose_url: true
+        media_library:
+          config:
+            multiple: true
       - widget: select
         label: "tags"
         name: "tags"
         multiple: true
         create: true
         options: [ "Tags", "created", "from", "config.yml" ]
+  - label: "Документы"
+    name: "documents"
+    editor:
+      preview: false
+    files:
+      - label: "Документы заемщика"
+        name: "doc-templates"
+        file: "src/_data/credit-docs.yaml"
+        fields:
+          - label: Шаблоны документов
+            name: doc-templates
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Файл шаблона, name: doc-file, widget: file }
+              - { label: Description, name: desc, widget: string }
+      - label: "Документы инвестора"
+        name: "investDocs"
+        file: "src/_data/invest-docs.yaml"
+        fields:
+          - label: Шаблоны документов
+            name: doc-templates
+            widget: list
+            collapsed: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Файл шаблона, name: doc-file, widget: file }
+              - { label: Description, name: desc, widget: string }
   - label: "Settings"
     name: "settings"
     editor:

@@ -1,0 +1,6 @@
+---
+doc-templates:
+  - title: паспорт
+    doc-file: "/1.pdf"
+    desc: Lorem ipsum
+
