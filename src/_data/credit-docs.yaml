@@ -1,6 +1,4 @@
----
 doc-templates:
   - title: паспорт
-    doc-file: "/1.pdf"
+    doc-file: /static/img/scheda-equipaggiamento-nuova-yaris-160621_tcm-20-1037479.pdf
     desc: Lorem ipsum
-
