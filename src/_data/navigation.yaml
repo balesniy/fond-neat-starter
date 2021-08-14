@@ -1,10 +1,14 @@
 ---
 items:
-  - text: Menu One
-    url: "#"
-  - text: Menu Two
-    url: "#"
-  - text: Menu Three
-    url: "#"
-  - text: Blog
+  - text: Инвестиции
+    url: "/invest"
+  - text: Займы
+    url: "/biz"
+  - text: Реферальная программа
+    url: "/ref"
+  - text: Блог
+    url: "/blog"
+  - text: о нас
+    url: "/about"
+  - text: документы
     url: "/blog"

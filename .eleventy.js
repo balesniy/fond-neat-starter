@@ -17,6 +17,23 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  // Filter using `Array.filter`
+  eleventyConfig.addCollection("keyMustExistInData", function(collectionApi) {
+    return collectionApi.getAll().filter(function(item) {
+      // Side-step tags and do your own filtering
+      return "myCustomDataKey" in item.data;
+    });
+  });
+
+  eleventyConfig.addCollection("myCustomSort", function(collectionApi) {
+    return collectionApi.getAll().sort(function(a, b) {
+      //return a.date - b.date; // sort by date - ascending
+      return b.date - a.date; // sort by date - descending
+      //return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
+      //return b.inputPath.localeCompare(a.inputPath); // sort by path - descending
+    });
+  });
+
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
 

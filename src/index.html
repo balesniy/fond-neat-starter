@@ -1,22 +1,83 @@
 ---
 layout: default
-title: Neat Starter
+title: ФОНД БРИДЖ
 path: home
+primaryCTA:
+    title: 'This is an agency that doesn’t actually exist'
+    summary: 'This is the project site you build when you take the “Learn
+    Eleventy From Scratch” course so it is all made up as a pretend
+    context. You will learn a lot about Eleventy by building this site
+    though. Take the course today!'
+    buttonText: 'Buy a copy'
+    buttonUrl: 'https://piccalil.li/course/learn-eleventy-from-scratch/'
 ---
 
-<div class="container mx-auto lg:h-screen flex flex-col justify-center items-center">
-  <h1>
-    Welcome to
-    <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-      {{title}}
-    </strong>
-  </h1>
+<div class="container mx-auto lg:min-h-screen flex flex-col justify-center items-center">
+    <h1 class="mt-16">
+        Welcome to
+        <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            {{title}}
+        </strong>
+    </h1>
 
-  <p>
-    <abbr title="netlify cms, eleventy, alpine js & tailwind css">NEAT</abbr>
-    Starter Template. Get Started by editing.
-    <code class="bg-gray-100 text-blue-800 p-1">/index.njk</code>
-  </p>
+    <p>
+        Пассивный доход до 20% годовых на инвестициях в недвижимость.
+    </p>
+    <div>
+        <h3>Отзывы инвесторов</h3>
+        <ul>
+            <li>Отзыв 1</li>
+            <li>Отзыв 2</li>
+            <li>Отзыв 3</li>
+        </ul>
+    </div>
+    <div>
+        <h3>Вопросы</h3>
+        {% set questionslist = collections.question %}
 
-  {% include "./_includes/partials/content.html" %}
+        {% for question in questionslist %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ question.url | url }}">
+                    {% if question.data.title %}
+                    {{ question.data.title }}
+                    {% else %}
+                    Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ question.date | readableDate }}
+                    by
+                    <a>{{ question.data.author }}</a>
+
+                </time>
+            </p>
+            {% if question.data.description %}
+            <p class="text-lg text-gray-500 mb-3">
+                {{ question.data.description }}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ question.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h3>Видео</h3>
+        <ul>
+            <li>Видео 1</li>
+            <li>Видео 2</li>
+            <li>Видео 3</li>
+        </ul>
+    </div>
+
+    {% include "./_includes/partials/content.html" %}
 </div>
