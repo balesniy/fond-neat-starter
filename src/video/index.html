@@ -1,0 +1,23 @@
+---
+title: Новые видео
+layout: blog
+eleventyExcludeFromCollections: true
+---
+
+<section class="mt-15">
+
+    <ul>
+        {% for video in video.items %}
+        <li>
+            <h4 class="font-bold text-3xl text-gray-900 mb-2">
+                {% if video.title %}
+                {{ video.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+            </h4>
+            <p>{{ video.url }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

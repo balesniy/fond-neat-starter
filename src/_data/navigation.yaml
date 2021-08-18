@@ -11,4 +11,4 @@ items:
   - text: о нас
     url: "/about"
   - text: документы
-    url: "/blog"
+    url: "/docs"

@@ -2,6 +2,7 @@
 layout: blog
 ---
 
+<h2>Новое на YouTube</h2>
 <section class="mt-15">
     {% set postslist = collections.post %}
 
@@ -29,6 +30,16 @@ layout: blog
                     {{ post.data.description }}
                 </p>
             {% endif %}
+            {% if post.data.tags %}
+            <p>
+                {% for tag in post.data.tags %}
+                {%- if tag != "post" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                {%- endif -%}
+                {% endfor %}
+            </p>
+            {% endif %}
 
             <p>
                 <a href="{{ post.url | url }}" class="text-indigo-500 font-bold text-lg">
@@ -39,3 +50,90 @@ layout: blog
         </article>
     {% endfor %}
 </section>
+
+<div>
+    <h3>Новости</h3>
+    <a href="{{ '/news' | url }}">все новости</a>
+    <ul>
+        {% for event in news.items %}
+        <li>
+            <h4 class="font-bold text-3xl text-gray-900 mb-2">
+                {% if event.title %}
+                {{ event.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+            </h4>
+            <p>{{ event.url }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<section class="mt-15">
+    <h3>Статьи</h3>
+    <a href="{{ '/video' | url }}">все статьи</a>
+
+    {% for article in collections.article | reverse %}
+    <article class="my-8">
+        <h2 class="font-bold text-3xl text-gray-900 mb-2">
+            <a href="{{ article.url | url }}">
+                {% if article.data.title %}
+                {{ article.data.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+            </a>
+        </h2>
+        <p class="text-base leading-6 text-gray-500 mb-3">
+            <time>
+                {{ article.date | readableDate }}
+                by
+                <a>{{ article.data.author }}</a>
+
+            </time>
+        </p>
+        {% if article.data.description %}
+        <p class="text-lg text-gray-500 mb-3">
+            {{ article.data.description }}
+        </p>
+        {% endif %}
+        {% if article.data.tags %}
+        <p>
+            {% for tag in article.data.tags %}
+            {%- if tag != "question" -%}
+            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+            <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+            {%- endif -%}
+            {% endfor %}
+        </p>
+        {% endif %}
+
+        <p>
+            <a href="{{ article.url | url }}" class="text-indigo-500 font-bold text-lg">
+                Read more →
+            </a>
+        </p>
+
+    </article>
+    {% endfor %}
+</section>
+
+<div>
+    <h3>Видео</h3>
+    <a href="{{ '/video' | url }}">больше видео</a>
+    <ul>
+        {% for video in video.items %}
+        <li>
+            <h4 class="font-bold text-3xl text-gray-900 mb-2">
+                {% if video.title %}
+                {{ video.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+            </h4>
+            <p>{{ video.url }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

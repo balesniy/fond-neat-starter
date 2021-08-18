@@ -1,10 +1,11 @@
 ---
-title: This is my second question
+title: This is my second review
 description: Capitalize on low hanging fruit to identify a ballpark value added
   activity to beta test. Override the digital divide with additional
   clickthroughs from DevOps.
 author: Surjith S M
 date: 2021-08-13T15:25:07.373Z
+thumbnail: /static/img/image_2021-08-13_18-49-09.png
 tags:
   - left
   - center

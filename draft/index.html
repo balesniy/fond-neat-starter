@@ -23,20 +23,9 @@ primaryCTA:
     <p>
         Пассивный доход до 20% годовых на инвестициях в недвижимость.
     </p>
-    <h3>Статистика</h3>
-    <h3>Варианты инвестирования</h3>
-    <h3>Калькулятор</h3>
-    <h3>Куда мы инвестируем</h3>
-    <p>Фонд Бридж — инвестиционная компания
-        Мы вкладываем собственные средства и капитал наших инвесторов в надежные инструменты на рынке недвижимости:</p>
-    <p>Привлеченный капитал приносит прибыль в 30–36% годовых. Мы берем себе часть прибыли за управление средствами, а наши инвесторы получают в среднем 18% годовой доходности на полном пассиве</p>
-    <h3>Реферальная</h3>
-    <p>Получайте 4% годовых от суммы, которую инвестировал ваш товарищ!</p>
-    <h3>Как стать инвестором</h3>
 
-    <div class="bg-gray-300 rounded">
+    <div>
         <h3>Отзывы инвесторов</h3>
-        <a href="{{ '/reviews' | url }}">больше отзывов</a>
         {% set reviews = collections.review %}
 
         {% for review in reviews %}
@@ -54,9 +43,7 @@ primaryCTA:
             <img src="{{review.data.thumbnail}}" alt="">
             {% endif %}
             {% if review.data.mediaUrl %}
-            <div class="max-w-md mx-auto">
-                <p>{{ review.data.mediaUrl }}</p>
-            </div>
+            <p>{{ review.data.mediaUrl }}</p>
             {% endif %}
             <p class="text-base leading-6 text-gray-500 mb-3">
                 <time>
@@ -81,11 +68,8 @@ primaryCTA:
         </article>
         {% endfor %}
     </div>
-    <h3>Гарантии</h3>
-    <p>Каждая сделка подкреплена залогом в виде ликвидной недвижимости. Ее рыночная стоимость минимум в 2 раза выше суммы инвестиций, что перекрывает риски </p>
     <div>
         <h3>Вопросы</h3>
-        <a href="{{ '/questions' | url }}">Больше ответов</a>
         {% set questions = collections.question %}
 
         {% for question in questions %}
@@ -128,21 +112,12 @@ primaryCTA:
 
     <div>
         <h3>Видео</h3>
-        <a href="{{ '/video' | url }}">больше видео</a>
         <ul>
-            {% for video in video.items %}
-            <li>
-                <h4 class="font-bold text-3xl text-gray-900 mb-2">
-                    {% if video.title %}
-                    {{ video.title }}
-                    {% else %}
-                    Untitled
-                    {% endif %}
-                </h4>
-                <p>{{ video.url }}</p>
-            </li>
-            {% endfor %}
+            <li>Видео 1</li>
+            <li>Видео 2</li>
+            <li>Видео 3</li>
         </ul>
     </div>
 
+    {% include "./_includes/partials/content.html" %}
 </div>

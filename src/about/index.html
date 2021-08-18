@@ -1,0 +1,142 @@
+---
+layout: default
+title: О компании
+path: about
+primaryCTA:
+    title: 'This is an agency that doesn’t actually exist'
+    summary: 'This is the project site you build when you take the “Learn
+    Eleventy From Scratch” course so it is all made up as a pretend
+    context. You will learn a lot about Eleventy by building this site
+    though. Take the course today!'
+---
+
+<div class="container mx-auto lg:min-h-screen flex flex-col justify-center items-center">
+    <h1 class="mt-16">
+        Welcome to
+        <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            {{title}}
+        </strong>
+    </h1>
+
+    <h2>Кто мы</h2>
+    <p>Быстрорастущая компания на рынке финансов и инвестиций. За последний год наш инвестиционный портфель вырос в 5 раз и достиг 300 млн. рублей.
+        Помогаем частным инвесторам зарабатывать на инвестициях в недвижимость в прямом эфире с октября 2018.
+
+        Открытость и прозрачность — основные принципы нашей работы
+        Показываем внутрянку своей деятельности и по сей день</p>
+    <h2>Портфель</h2>
+    <h2>Статистика</h2>
+    <h2>Отчеты</h2>
+    <div class="bg-blue-100">
+        <h2 class="font-bold text-3xl text-gray-900 mb-2">
+            <a href="{{ '/reports' | url }}">
+                ВСЕ ОТЧЕТЫ
+            </a>
+
+        </h2>
+
+        {% set reports = collections.report %}
+        {% for report in reports %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ report.url | url }}">
+                    {% if report.data.title %}
+                    {{ report.data.title }}
+                    {% else %}
+                    Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            {% if report.data.thumbnail %}
+            <img src="{{report.data.thumbnail}}" alt="">
+            {% endif %}
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ report.date | readableDate }}
+                    by
+                    <a>{{ report.data.author }}</a>
+
+                </time>
+            </p>
+            {% if report.data.description %}
+            <p class="text-lg text-gray-500 mb-3">
+                {{ report.data.description }}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ report.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+        {% endfor %}
+    </div>
+    
+    <h2>Наша команда</h2>
+    <ul>
+        {% for member in team.items %}
+        <li>
+            <h4 class="font-bold text-3xl text-gray-900 mb-2">
+                {% if member.name %}
+                {{ member.name }}
+                {% else %}
+                Anon
+                {% endif %}
+            </h4>
+            <img src="{{ member.avatar }}" alt="">
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="bg-gray-300 rounded">
+        <h3>Отзывы инвесторов</h3>
+        <a href="{{ '/reviews' | url }}">больше отзывов</a>
+        {% set reviews = collections.review %}
+
+        {% for review in reviews %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ review.url | url }}">
+                    {% if review.data.title %}
+                    {{ review.data.title }}
+                    {% else %}
+                    Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            {% if review.data.thumbnail %}
+            <img src="{{review.data.thumbnail}}" alt="">
+            {% endif %}
+            {% if review.data.mediaUrl %}
+            <div class="max-w-md mx-auto">
+                <p>{{ review.data.mediaUrl }}</p>
+            </div>
+            {% endif %}
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ review.date | readableDate }}
+                    by
+                    <a>{{ review.data.author }}</a>
+
+                </time>
+            </p>
+            {% if review.data.description %}
+            <p class="text-lg text-gray-500 mb-3">
+                {{ review.data.description }}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ review.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+        {% endfor %}
+    </div>
+
+
+</div>

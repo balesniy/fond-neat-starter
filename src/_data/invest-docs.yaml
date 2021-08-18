@@ -1,7 +1,3 @@
-investDocs:
-  - title: паспорт
-    doc-file: ""
-    desc: Lorem ipsum
 doc-templates:
   - title: договор
     doc-file: /static/img/scheda-equipaggiamento-nuova-yaris-160621_tcm-20-1037479.pdf

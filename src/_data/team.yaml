@@ -1,0 +1,11 @@
+---
+items:
+  - name: Василий
+    avatar: /static/img/img.png
+  - name: Иван
+    avatar: /static/img/img.png
+  - name: Марта
+    avatar: /static/img/img.png
+  - name: Гена
+    avatar: /static/img/img.png
+

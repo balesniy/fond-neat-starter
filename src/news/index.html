@@ -1,0 +1,23 @@
+---
+title: Новости
+layout: blog
+eleventyExcludeFromCollections: true
+---
+
+<section class="mt-15 mx-auto max-w-md">
+
+    <ul>
+        {% for event in news.items %}
+        <li>
+            <h4 class="font-bold text-3xl text-gray-900 mb-2">
+                {% if event.title %}
+                {{ event.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+            </h4>
+            <p>{{ event.url }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

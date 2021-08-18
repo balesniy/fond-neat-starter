@@ -1,0 +1,53 @@
+---
+title: Отзывы
+layout: blog
+eleventyExcludeFromCollections: true
+---
+
+<section class="mt-15">
+    {% set reviews = collections.review %}
+
+    {% for review in reviews | reverse %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ review.url | url }}">
+                    {% if review.data.title %}
+                        {{ review.data.title }}
+                    {% else %}
+                        Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ review.date | readableDate }}
+                    by
+                    <a>{{ review.data.author }}</a>
+
+                </time>
+            </p>
+            {% if review.data.description %}
+                <p class="text-lg text-gray-500 mb-3">
+                    {{ review.data.description }}
+                </p>
+            {% endif %}
+            {% if review.data.tags %}
+            <p>
+                {% for tag in review.data.tags %}
+                {%- if tag != "review" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                {%- endif -%}
+                {% endfor %}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ review.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+    {% endfor %}
+</section>

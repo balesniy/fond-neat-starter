@@ -1,0 +1,55 @@
+---
+pagination:
+    data: collections
+    size: 1
+    alias: tag
+    filter:
+        - all
+        - nav
+        - post
+        - posts
+permalink: /tags/{{ tag | slug }}/
+layout: blog
+renderData:
+    title: "Tagged “{{ tag }}”"
+    metaDescription: "All posts from the Blog tagged with “{{ tag }}”"
+---
+
+<h1>Tagged “{{ tag }}”</h1>
+
+<ol>
+    {%- for item in pagination.hrefs %}
+    <li>{{ item }}</li>
+    {% endfor -%}
+</ol>
+
+{% set postslist = collections[tag] %}
+{% for post in postslist | reverse %}
+<article class="my-8">
+    <h2 class="font-bold text-3xl text-gray-900 mb-2">
+        <a href="{{ post.url | url }}">
+            {% if post.data.title %}
+            {{ post.data.title }}
+            {% else %}
+            Untitled
+            {% endif %}
+        </a>
+    </h2>
+    {% if post.data.tags %}
+    {% for tag in post.data.tags %}
+    <a href="{{tag.url}}" class="p-3 border rounded border-gray-200 bg-gray-400 text-gray-50 hover:border-purple-400">
+        {{tag}}
+    </a>
+    {% endfor %}
+    {% endif %}
+    <p>
+        <a href="{{ post.url | url }}" class="text-indigo-500 font-bold text-lg">
+            Read more →
+        </a>
+    </p>
+</article>
+{% endfor %}
+
+<nav>
+    <a href="{{ '/blog/' | url }}">← Blog index</a>
+</nav>

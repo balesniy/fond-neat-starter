@@ -1,0 +1,53 @@
+---
+title: Reports
+layout: blog
+eleventyExcludeFromCollections: true
+---
+
+<section class="mt-15">
+    {% set reports = collections.report %}
+
+    {% for report in reports | reverse %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ report.url | url }}">
+                    {% if report.data.title %}
+                        {{ report.data.title }}
+                    {% else %}
+                        Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ report.date | readableDate }}
+                    by
+                    <a>{{ report.data.author }}</a>
+
+                </time>
+            </p>
+            {% if report.data.description %}
+                <p class="text-lg text-gray-500 mb-3">
+                    {{ report.data.description }}
+                </p>
+            {% endif %}
+            {% if report.data.tags %}
+            <p>
+                {% for tag in report.data.tags %}
+                {%- if tag != "report" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                {%- endif -%}
+                {% endfor %}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ report.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+    {% endfor %}
+</section>

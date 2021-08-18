@@ -16,8 +16,9 @@ collections:
     name: "blog"
     folder: "src/posts"
     create: true
+    show_preview_links: true
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }

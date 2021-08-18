@@ -1,0 +1,53 @@
+---
+title: Ответы на вопросы
+layout: blog
+eleventyExcludeFromCollections: true
+---
+
+<section class="mt-15">
+    {% set questions = collections.question %}
+
+    {% for question in questions | reverse %}
+        <article class="my-8">
+            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                <a href="{{ question.url | url }}">
+                    {% if question.data.title %}
+                        {{ question.data.title }}
+                    {% else %}
+                        Untitled
+                    {% endif %}
+                </a>
+            </h2>
+            <p class="text-base leading-6 text-gray-500 mb-3">
+                <time>
+                    {{ question.date | readableDate }}
+                    by
+                    <a>{{ question.data.author }}</a>
+
+                </time>
+            </p>
+            {% if question.data.description %}
+                <p class="text-lg text-gray-500 mb-3">
+                    {{ question.data.description }}
+                </p>
+            {% endif %}
+            {% if question.data.tags %}
+            <p>
+                {% for tag in report.data.tags %}
+                {%- if tag != "question" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                {%- endif -%}
+                {% endfor %}
+            </p>
+            {% endif %}
+
+            <p>
+                <a href="{{ question.url | url }}" class="text-indigo-500 font-bold text-lg">
+                    Read more →
+                </a>
+            </p>
+
+        </article>
+    {% endfor %}
+</section>

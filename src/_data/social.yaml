@@ -1,0 +1,18 @@
+---
+items:
+  - service: YouTube
+    icon: /static/img/icon.svg
+    url: https://www.youtube.com/c/postnauka
+  - service: Instagram
+    icon: /static/img/icon.svg
+    url: https://www.youtube.com/c/postnauka
+  - service: TikTok
+    icon: /static/img/icon.svg
+    url: https://www.youtube.com/c/postnauka
+  - service: VK
+    icon: /static/img/icon.svg
+    url: https://www.youtube.com/c/postnauka
+  - service: Telegram
+    icon: /static/img/icon.svg
+    url: https://www.youtube.com/c/postnauka
+
